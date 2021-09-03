@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+
+  <body>
+    <div class="container-fluid vh-100 vw-100">
+      <%- include('partials/nav') %>
+
+      <div class="row wrapper">
+        <%- include('partials/sidebar') %>
+
+        <div class="col-10 main">
+          <div class="container content-box">
+            <div class="row mb-4 mt-5">
+              <div class="col-12">
+                <div class="card">
+                  <div
+                    class="
+                      card-header
+                      font-weight-normal
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    <h5 class="m-0">User Game</h5>
+                    <div class="">
+                      <a
+                        type="button"
+                        class="btn badge badge-primary"
+                        data-toggle="modal"
+                        data-target="#addModal"
+                      >
+                        <span class="mx-1 my-3">Add User</span>
+                      </a>
+                      <%- include('partials/add-modal') %>
+                    </div>
+                  </div>
+                  <div class="card-body table-responsive table table-hover">
+                    <table class="table table-m text-nowrap">
+                      <thead>
+                        <tr>
+                          <th>username</th>
+                          <th>action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% if (users) { %> <% users.forEach(user => { %>
+                        <tr>
+                          <td><%= user.username %></td>
+                          <td>
+                            <a
+                              class="btn badge badge-warning p-1 edit-button"
+                              data-toggle="modal"
+                              data-target="#editModal"
+                              data-userid="<%= user.id %>"
+                            >
+                              <i
+                                class="fas fa-edit"
+                                style="pointer-events: none"
+                              ></i>
+                              <span class="ml-1" style="pointer-events: none"
+                                >Edit</span
+                              >
+                            </a>
+                            <%- include('partials/edit-modal') %>
+                            <a
+                              type="button"
+                              class="btn badge badge-danger p-1"
+                              data-toggle="modal"
+                              data-target="#deleteModal"
+                            >
+                              <i class="fas fa-trash"></i>
+                              <span class="ml-1">Delete</span>
+                            </a>
+                            <%- include('partials/delete-modal') %>
+                          </td>
+                        </tr>
+                        <% }) %> <% } else { %>
+                        <tr>
+                          <td colspan="3">No data available in the table</td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/scripts') %>
+    <script>
+      const editBtn = document.querySelectorAll('.edit-button');
+      editBtn.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const id = e.target.dataset.userid;
+
+          fetch(`http://localhost:3000/apis/users/${id}`)
+            .then((res) => res.json())
+            .then((user) => {
+              console.log(user);
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

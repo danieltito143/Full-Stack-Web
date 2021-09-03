@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+:root {
+  font-family: 'Open Sans',serif;
+ 
+}
+
+body {
+  background-color: #b18c28;
+}
+
+body h1 {
+  margin-left: 1rem;
+  color: #fbff17;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+img {
+  width: 5rem;
+  margin-top: 2rem;
+  margin-right: 2.5rem;
+  margin-left: 2.5rem;
+}
+
+.player {
+  float: right;
+  text-align: right;
+  cursor: pointer;
+  width: 10rem;
+  height: 10rem;
+}
+
+.comp {
+  float: left;
+  text-align: left;
+  width: 10rem;
+  height: 10rem;
+}
+
+.versus {
+  text-align: center;
+  color: #ff1b1b;
+  padding-top: 1rem;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.result {
+  text-align: center;
+  background-color: #5c8b05;
+  height: 8rem;
+  padding-top: 2rem;
+  transform: rotate(-30deg);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.reset {
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #dbdbdb;
+  border-radius:10px;
+}
+
+.score-board {
+  margin: 1rem auto;
+  border: 0.188rem solid black;
+  border-radius: 0.25rem;
+  text-align: center;
+  width: 12.5rem;
+  padding: 0.938rem 1.25rem;
+  position: relative;
+}
+
+#player-label {
+  position: absolute;
+  left: -1.563rem;
+}
+
+#comp-label {
+  position: absolute;
+  right: -1.875rem;
+}

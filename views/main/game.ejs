@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/game.css" />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1><a href="/">&lt;</a> Rock Paper Scissors</h1>
+      <div class="score-board">
+        <div id="player-label" class="badge">Player</div>
+        <div id="comp-label" class="badge">Comp</div>
+        <span id="player-score">0</span>-<span id="comp-score">0</span>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <h2 class="text-right">PLAYER 1</h2>
+        </div>
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-5 col-sm-5 offset-md-2">
+          <h2 class="text-left">COMP</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <div id="player-rock" data-option="rock" class="player">
+            <img src="assets/rock.png" data-option="rock" alt="rock" />
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-5 col-sm-5">
+          <div id="comp-rock" data-option="rock" class="comp">
+            <img src="assets/rock.png" data-option="rock" alt="rock" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <div id="player-paper" data-option="paper" class="player">
+            <img src="assets/paper.png" data-option="paper" alt="paper" />
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <div class="versus">
+            <p id="vs">VS</p>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-5">
+          <div id="comp-paper" data-option="paper" class="comp">
+            <img src="assets/paper.png" data-option="paper" alt="paper" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <div id="player-scissors" data-option="scissors" class="player">
+            <img src="assets/scissors.png" data-option="scissors" alt="scissors" />
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-5 col-sm-5">
+          <div id="comp-scissors" data-option="scissors" class="comp">
+            <img src="assets/scissors.png" data-option="scissors" alt="scissors" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-5"></div>
+        <div class="col-md-2 col-sm-2">
+          <div class="reset">
+            <center><img src="assets/refresh.png" alt="refresh" /></center>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-5"></div>
+      </div>
+    </div>
+    <script src="./js/game.js"></script>
+  </body>
+</html>
