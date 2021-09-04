@@ -2,12 +2,11 @@ import { UserHistory } from '../models';
 import ERRORS from '../configs/errors';
 
 class UserHistoryService {
-  static getHistory = () =>
-    UserHistory.findAll({
-      attributes: {
-        exclude: ['user_id', 'UserId'],
-      },
-    });
+  static getHistory = () => UserHistory.findAll({
+    attributes: {
+      exclude: ['user_id', 'UserId'],
+    },
+  });
 
   static createHistory = async ({ result }) => {
     if (!result) {

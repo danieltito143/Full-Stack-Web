@@ -13,6 +13,16 @@ class BaseController {
           code: 400,
           message: 'User id is not exist',
         };
+      case ERRORS.USERNAME_NOT_EXIST:
+        return {
+          code: 400,
+          message: 'Username is not exist',
+        };
+      case ERRORS.PASSOWRD_NOT_MATCH:
+        return {
+          code: 400,
+          message: 'Password is wrong',
+        };
       case ERRORS.BAD_REQUEST:
         return {
           code: 400,

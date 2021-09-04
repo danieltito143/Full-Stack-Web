@@ -14,24 +14,40 @@ class UserBiodataController extends BaseController {
     }
   };
 
-  static createBiodata = async (req, res) => {
+  static getUserBioById = async (req, res) => {
     try {
-      const { name, gender, hobby, city, userId } = req.body;
+      const { id } = req.params;
 
-      const biodata = await UserBiodataService.createUserBiodata({
-        userId,
+      const biodata = await BiodataService.getBioById(id);
+
+      return res.status(200).json(biodata);
+    } catch (err) {
+      const error = this.getError(err);
+
+      return res.status(error.code).json(error.message);
+    }
+  };
+
+  static createBiodata = async (req, res) => {
+    console.log(req.decoded);
+    try {
+      const { name, gender, hobby, city } = req.body;
+      const { id: userId } = req.decoded;
+
+      await UserBiodataService.createUserBiodata({
         name,
         gender,
         hobby,
         city,
+        userId,
       });
 
       return res.status(201).json({
-        id: biodata.id,
         message: 'Created',
       });
     } catch (err) {
       const error = this.getError(err);
+      console.log(err);
 
       return res.status(error.code).json(error);
     }

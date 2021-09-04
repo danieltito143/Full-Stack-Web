@@ -68,5 +68,19 @@ class UserController extends BaseController {
       return res.status(error.code).json(error);
     }
   };
+
+  static login = async (req, res) => {
+    try {
+      const { username, password } = req.body;
+
+      const token = await UserService.loginUser({ username, password });
+
+      return res.status(200).json({ token });
+    } catch (err) {
+      const error = this.getError(err);
+
+      return res.status(error.code).json(error);
+    }
+  };
 }
 export default UserController;

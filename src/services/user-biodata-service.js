@@ -18,30 +18,31 @@ class UserBiodataService {
     return biodata;
   };
 
-  static findWithCreateUserBiodata = async ({
-    userId,
-    name,
-    gender,
-    hobby,
-    city,
-  }) => {
-    if (!userId || !name || !gender || !hobby || !city) {
-      throw new Error(ERRORS.NOT_COMPLETE);
-    }
-
-    const newBiodata = await UserBiodata.findOrCreate({
-      where: { user_id: userId },
-      default: {
-        name, gender, hobby, city,
-      },
+  static getBioById = async (id) => {
+    const biodata = await UserGameBiodata.findOne({
+      where: { id },
     });
 
-    return newBiodata;
+    if (!biodata) throw new Error(ERRORS.NOT_FOUND);
+
+    return biodata;
   };
 
-  static updateUserBiodata = async (id, {
-    name, gender, hobby, city,
-  }) => {
+  static createUserBiodata = async ({ name, gender, hobby, city, userId }) => {
+    if (!name || !city) {
+      throw new Error(ERRORS.NOT_COMPLETED);
+    }
+
+    return UserBiodata.create({
+      name,
+      gender,
+      hobby,
+      city,
+      user_id: userId,
+    });
+  };
+
+  static updateUserBiodata = async (id, { name, gender, hobby, city }) => {
     if (!name || !gender || !hobby || !city) {
       throw new Error(ERRORS.NOT_COMPLETE);
     }
@@ -55,7 +56,7 @@ class UserBiodataService {
       },
       {
         where: { id },
-      },
+      }
     );
 
     return biodata;

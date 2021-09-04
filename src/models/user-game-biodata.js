@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
       underscored: true,
       tableName: 'user_biodata',
-    }
+    },
   );
 
   return UserBiodata;

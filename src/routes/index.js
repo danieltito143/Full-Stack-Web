@@ -4,6 +4,7 @@ const ROUTE_PARAMS = {
 
 const API_ROUTES = {
   ROOT: '/',
+  LOGIN: '/login',
   GET_USER: '/user',
   CREATE_USER: '/user',
   USER_ID: `/user/${ROUTE_PARAMS.id}`,

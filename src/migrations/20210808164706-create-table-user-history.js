@@ -18,6 +18,8 @@ module.exports = {
           },
           key: 'id',
         },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
     });
   },

@@ -1,6 +1,7 @@
 import { User } from '../models';
 import ERRORS from '../configs/errors';
-import { generateHash } from '../utils/encryption';
+import { compareHash, generateHash } from '../utils/encryption';
+import Jwt from '../utils/jwt';
 
 class UserService {
   static getUsers = () =>
@@ -9,6 +10,18 @@ class UserService {
         exclude: ['password'],
       },
     });
+
+  static getUserByUsername = async (username) => {
+    const user = await User.findOne({
+      where: { username },
+    });
+
+    if (!user) {
+      throw new Error(ERRORS.USERNAME_NOT_EXIST);
+    }
+
+    return user;
+  };
 
   static createUser = ({ username, email, password }) => {
     if (!email || !username || !password) {
@@ -57,6 +70,18 @@ class UserService {
     }
 
     return User.destroy({ where: { id } });
+  };
+
+  static loginUser = async ({ username, password }) => {
+    const user = await this.getUserByUsername(username);
+
+    if (!compareHash(password, user.password)) {
+      throw new Error(ERRORS.PASSOWRD_NOT_MATCH);
+    }
+
+    return Jwt.sign({
+      id: user.id,
+    });
   };
 }
 
